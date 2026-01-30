@@ -8,10 +8,13 @@ public static class Program
         InputData data = InputData.LoadFromJson("input.json");
         Shape2D projected = ProjectShape(data.Model);
         projected.Print (); // The tests check for the correct projected data to be printed
-        if (!Environment.GetEnvironmentVariable("CI").Equals("true"))
+        var ci = Environment.GetEnvironmentVariable("CI");
+
+        if (ci != "true")
         {
             Render(projected, data.Parameters, "output.jpg");
-        };
+        }
+
     }
 
     private static void Render(Shape2D shape, RenderParameters parameters, string outputPath)
