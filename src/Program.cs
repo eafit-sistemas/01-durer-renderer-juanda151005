@@ -9,7 +9,14 @@ public static class Program
         Shape2D projected = ProjectShape(data.Model);
         projected.Print (); // The tests check for the correct projected data to be printed
 
-        Render(projected, data.Parameters, "output.jpg");
+        try
+        {
+            Render(projected, data.Parameters, "output.jpg");
+        }
+        catch (TypeInitializationException ex) when (ex.InnerException is DllNotFoundException)
+        {
+            Console.WriteLine($"Warning: Could not render image - native library not available");
+        }
         
 
     }
