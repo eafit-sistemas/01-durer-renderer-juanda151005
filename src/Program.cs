@@ -26,12 +26,10 @@ public static class Program
 
         using SKBitmap bitmap = new(parameters.Resolution, parameters.Resolution);
         using SKCanvas canvas = new(bitmap);
-        canvas.Clear(SKColors.White);
+        canvas.Clear(SKColor.Parse("#003366"));
         using SKPaint paint = new()
         {
-            Color = SKColors.Black,
-            StrokeWidth = 2,
-            IsAntialias = true
+             Color = SKColors.FloralWhite 
         };
 
         for (int i=0; i < shape.Lines.Length; i++)
