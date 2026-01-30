@@ -8,12 +8,9 @@ public static class Program
         InputData data = InputData.LoadFromJson("input.json");
         Shape2D projected = ProjectShape(data.Model);
         projected.Print (); // The tests check for the correct projected data to be printed
-        var ci = Environment.GetEnvironmentVariable("CI");
 
-        if (ci != "true")
-        {
-            Render(projected, data.Parameters, "output.jpg");
-        }
+        Render(projected, data.Parameters, "output.jpg");
+        
 
     }
 
